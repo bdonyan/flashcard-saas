@@ -45,7 +45,7 @@ export default function Home() {
       <AppBar position = "static">
         <Toolbar>
           <Typography variant = "h6" style={{flexGrow: 1}}>
-            Flahcard SaaS
+            Flashcard SaaS
           </Typography>
           <SignedOut>
             <Button color="inherit" href="/sign-in">Login</Button>
@@ -70,7 +70,7 @@ export default function Home() {
           {' '}
           The easiest way to make flashcards from your text
         </Typography>
-        <Button variant='contained' color='primary' sx={{mt: 2}}>
+        <Button variant='contained' color='primary' sx={{mt: 2}} href="/generate">
           Get Started
         </Button>
       </Box>
