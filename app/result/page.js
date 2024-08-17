@@ -2,7 +2,7 @@
 import {useEffect, useState} from 'react'
 import { useRouter, useSearchParams } from 'next/navigation';
 import getStripe from '@/utils/get-stripe'
-import {CircularProgress, Typography, Box, Container} from '@mui/material'
+import {Button, CircularProgress, Typography, Box, Container} from '@mui/material'
 
 const ResultPage = () => {
     const router = useRouter()
@@ -94,6 +94,9 @@ const ResultPage = () => {
                     </>
                 )
             }
+            <Button variant='contained' color='primary' sx={{mt: 2}} href="/">
+            Return to Homepage
+            </Button>            
         </Container>
     )
 }

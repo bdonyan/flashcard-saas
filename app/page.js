@@ -52,6 +52,7 @@ export default function Home() {
             <Button color="inherit" href="/sign-up">Sign Up</Button>
           </SignedOut>
           <SignedIn>
+            <Button color="inherit" href="/flashcards">My Flashcards</Button>
             <UserButton />
           </SignedIn>
         </Toolbar>
