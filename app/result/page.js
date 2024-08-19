@@ -3,6 +3,8 @@ import {useEffect, useState} from 'react'
 import { useRouter, useSearchParams } from 'next/navigation';
 import getStripe from '@/utils/get-stripe'
 import {Button, CircularProgress, Typography, Box, Container} from '@mui/material'
+import Header from "@/components/header";
+import Footer from "@/components/footer"
 
 const ResultPage = () => {
     const router = useRouter()
@@ -37,14 +39,15 @@ const ResultPage = () => {
     if (loading) {
         return (
             <Container 
-             maxWidth="100vw"
+             maxWidth="false"
              sx={{
+                bgcolor: "#020303",
+                height: "100vh",
                 textAlign: 'center',
-                mt: 4,
              }}
             >
                 <CircularProgress/> 
-                <Typography variant="h6">Loading...</Typography>
+                <Typography variant="h6" sx={{ color: "#fff"}}>Loading...</Typography>
             </Container>
         )
     }
@@ -52,32 +55,35 @@ const ResultPage = () => {
     if (error) {
         return (
             <Container 
-             maxWidth="100vw"
+             maxWidth="false"
              sx={{
-                textAlign: 'center',
-                mt: 4,
+                bgcolor: "#020303",
+                height: "100vh",
              }}
             >
-                <Typography variant="h6">{error}</Typography>
+                <Header/ >
+                <Typography variant="h6" sx={{ color: "#fff"}}>{error}</Typography>
+                <Footer/ >                      
             </Container>
         )
     }
 
     return (
-        <Container 
-         maxWidth="100vw"
+        <Container
+         maxWidth="false"
          sx={{
-            textAlign: 'center',
-            mt: 4,
+            bgcolor: "#020303",
+            height: "100vh",
          }}
         >
+            <Header/ >
             {
                 session.payment_status === "paid" ? (
                     <>
                         <Typography variant = 'h4'>Thank you for purchasing</Typography>
                         <Box sx={{mt:22}}>
-                            <Typography variant="h6">Session ID: {session_id}</Typography>
-                            <Typography variant="body1">
+                            <Typography variant="h6" sx={{ color: "#fff", textAlign: 'center'}}>Session ID: {session_id}</Typography>
+                            <Typography variant="body1" sx={{ color: "#fff", textAlign: 'center'}}>
                                 We have received your payment. You will receive an email with the 
                                 order details shortly.
                             </Typography>
@@ -85,18 +91,16 @@ const ResultPage = () => {
                     </>
                 ) : (
                     <>
-                        <Typography variant = 'h4'>Payment Failed</Typography>
+                        <Typography variant = 'h4' sx={{ color: "#fff", textAlign: 'center'}}>Payment Failed</Typography>
                         <Box sx={{mt:22}}>
-                            <Typography variant="body1">
+                            <Typography variant="body1" sx={{ color: "#fff", textAlign: 'center'}}>
                                 Your payment was not successful. Please try again.
                             </Typography>
                         </Box>
                     </>
                 )
-            }
-            <Button variant='contained' color='primary' sx={{mt: 2}} href="/">
-            Return to Homepage
-            </Button>            
+            }    
+            <Footer/ >      
         </Container>
     )
 }
